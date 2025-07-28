@@ -20,6 +20,15 @@ import base64
 import queue
 import time
 import os
+from contextlib import redirect_stdout, redirect_stderr
+import io
+
+# Define MockInfo class at module level for proper pickling
+class MockInfo:
+    """Mock info class to mimic faster_whisper's transcription info format"""
+    def __init__(self, language='en', language_probability=0.9):
+        self.language = language
+        self.language_probability = language_probability
 
 # Named logger for this module.
 logger = logging.getLogger("realtimestt")
@@ -176,10 +185,10 @@ class ParakeetTranscriptionWorker:
                         logging.debug(f"Parakeet transcription: '{transcription}' in {elapsed:.4f}s")
                         
                         # Create mock info object similar to faster_whisper format
-                        mock_info = type('MockInfo', (), {
-                            'language': language or 'en',
-                            'language_probability': 0.9  # Parakeet doesn't provide this, use default
-                        })()
+                        mock_info = MockInfo(
+                            language=language or 'en',
+                            language_probability=0.9  # Parakeet doesn't provide this, use default
+                        )
                         
                         self.conn.send(('success', (transcription, mock_info)))
                         
