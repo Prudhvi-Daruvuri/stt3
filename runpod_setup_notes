@@ -1,0 +1,14 @@
+
+# installations
+apt update
+apt install -y portaudio19-dev ffmpeg git wget curl
+pip install -r requirements-gpu.txt
+apt install libcudnn9-cuda-12 libcudnn9-dev-cuda-12
+find /usr -name "libcudnn_ops.so*"
+echo "/usr/lib/x86_64-linux-gnu" | tee /etc/ld.so.conf.d/cudnn.conf
+ldconfig
+ldconfig -p | grep cudnn
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+
+
+# Now test the server

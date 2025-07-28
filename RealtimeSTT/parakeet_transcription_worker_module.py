@@ -92,9 +92,20 @@ class ParakeetTranscriptionWorker:
                 logging.error(error_msg)
                 raise ImportError(error_msg) from e
 
-            # Load the Parakeet model
+            # Load the Parakeet model - use the specific Parakeet model name
+            # Parakeet models have different names than Whisper models
+            parakeet_model_name = "nvidia/parakeet-tdt-0.6b-v2"  # Default Parakeet model
+            
+            # If a specific Parakeet model is provided, use it; otherwise use default
+            if self.model_path and "parakeet" in self.model_path.lower():
+                parakeet_model_name = self.model_path
+            elif self.model_path and self.model_path not in ["tiny", "base", "small", "medium", "large", "large-v1", "large-v2", "large-v3"]:
+                # If it's not a standard Whisper model name, assume it's a custom Parakeet model
+                parakeet_model_name = self.model_path
+            
+            logging.info(f"Loading Parakeet model: {parakeet_model_name}")
             self.model = nemo_asr.models.ASRModel.from_pretrained(
-                model_name=self.model_path
+                model_name=parakeet_model_name
             )
             
             # Move model to specified device if available
