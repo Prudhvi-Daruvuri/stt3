@@ -8,6 +8,7 @@ Created to provide an alternative backend to faster_whisper.
 Author: Based on Modal Parakeet example and RealtimeSTT architecture
 """
 
+import torch
 import torch.multiprocessing as mp
 import signal as system_signal
 import numpy as np
