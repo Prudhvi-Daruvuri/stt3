@@ -1,0 +1,26 @@
+2025-07-28 15:19:24.394 - RealTimeSTT: realtimestt - INFO - Starting RealTimeSTT
+2025-07-28 15:19:24.417 - RealTimeSTT: realtimestt - INFO - Initializing WebRTC voice with Sensitivity 3
+2025-07-28 15:19:24.417 - RealTimeSTT: realtimestt - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+2025-07-28 15:19:24.940 - RealTimeSTT: realtimestt - DEBUG - Silero VAD voice activity detection engine initialized successfully
+2025-07-28 15:19:24.942 - RealTimeSTT: realtimestt - DEBUG - Starting realtime worker
+2025-07-28 15:19:24.942 - RealTimeSTT: realtimestt - DEBUG - Waiting for main transcription model to start
+2025-07-28 15:19:26.855 - RealTimeSTT: realtimestt - INFO - Starting RealTimeSTT
+2025-07-28 15:19:30.263 - RealTimeSTT: realtimestt - DEBUG - Main transcription model ready
+2025-07-28 15:19:30.264 - RealTimeSTT: realtimestt - DEBUG - RealtimeSTT initialization completed successfully
+2025-07-28 15:19:30.264 - RealTimeSTT: realtimestt - DEBUG - Finishing recording thread
+2025-07-28 15:19:30.267 - RealTimeSTT: realtimestt - DEBUG - Terminating reader process
+2025-07-28 15:19:30.267 - RealTimeSTT: realtimestt - DEBUG - Terminating transcription process
+2025-07-28 15:19:30.742 - RealTimeSTT: realtimestt - DEBUG - Finishing realtime thread
+2025-07-28 15:19:43.387 - RealTimeSTT: realtimestt - INFO - Starting RealTimeSTT
+2025-07-28 15:19:43.411 - RealTimeSTT: realtimestt - INFO - Initializing WebRTC voice with Sensitivity 3
+2025-07-28 15:19:43.411 - RealTimeSTT: realtimestt - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+2025-07-28 15:19:43.603 - RealTimeSTT: realtimestt - DEBUG - Silero VAD voice activity detection engine initialized successfully
+2025-07-28 15:19:43.603 - RealTimeSTT: realtimestt - DEBUG - Starting realtime worker
+2025-07-28 15:19:43.603 - RealTimeSTT: realtimestt - DEBUG - Waiting for main transcription model to start
+2025-07-28 15:19:45.783 - RealTimeSTT: realtimestt - INFO - Starting RealTimeSTT
+2025-07-28 15:19:46.646 - RealTimeSTT: realtimestt - DEBUG - Main transcription model ready
+2025-07-28 15:19:46.647 - RealTimeSTT: realtimestt - DEBUG - RealtimeSTT initialization completed successfully
+2025-07-28 15:19:46.647 - RealTimeSTT: realtimestt - DEBUG - Finishing recording thread
+2025-07-28 15:19:46.655 - RealTimeSTT: realtimestt - DEBUG - Terminating reader process
+2025-07-28 15:19:46.655 - RealTimeSTT: realtimestt - DEBUG - Terminating transcription process
+2025-07-28 15:19:47.099 - RealTimeSTT: realtimestt - DEBUG - Finishing realtime thread
