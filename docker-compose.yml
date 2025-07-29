@@ -1,23 +1,40 @@
 services:
-  rtstt:
+  realtimestt-server:
     build:
       context: .
-      target: gpu # or cpu
-    image: rtstt
-    container_name: rtstt
+      target: gpu # Change to 'cpu' for CPU-only deployment
+    image: realtimestt-multibackend
+    container_name: realtimestt-server
     volumes:
+      # Uncomment for development (live code changes)
       # - ./RealtimeSTT:/app/RealtimeSTT
-      # - ./example_browserclient:/app/example_browserclient
+      # - ./RealtimeSTT_server:/app/RealtimeSTT_server
       - cache:/root/.cache
+      - models:/app/models  # Cache for downloaded models
     ports:
-      - "9001:9001"
-
-    # if 'gpu' target
+      - "8011:8011"  # WebSocket control port
+      - "8012:8012"  # WebSocket data port
+    environment:
+      - KMP_DUPLICATE_LIB_OK=TRUE
+      - PYTHONPATH=/app
+    # Default command (can be overridden)
+    command: ["python3", "stt_server.py", "--backend", "faster_whisper"]
+    
+    # GPU support (remove this section for CPU-only deployment)
     deploy:
       resources:
         reservations:
           devices:
           - capabilities: ["gpu"]
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8011", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
   nginx:
     image: nginx:latest
     container_name: nginx_web
@@ -28,3 +45,4 @@ services:
 
 volumes:
   cache:
+  models:
